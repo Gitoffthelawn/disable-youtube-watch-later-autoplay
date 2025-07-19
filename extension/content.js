@@ -5,13 +5,8 @@ const isMacOs = navigator.userAgentData
   : navigator.userAgent.indexOf("Mac OS X") !== -1;
 
 function tryFixWatchLaterVideoUrl(element) {
-  if (element.tagName !== "A") {
-    while (element) {
-      if (element?.tagName === "A") {
-        break;
-      }
-      element = element.parentElement;
-    }
+  while (element.tagName !== "A") {
+    element = element.parentElement;
     if (!element) {
       return null;
     }
