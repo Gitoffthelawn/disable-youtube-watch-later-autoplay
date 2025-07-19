@@ -7,21 +7,12 @@ const isMacOs = navigator.userAgentData
 function tryFixWatchLaterVideoUrl(element) {
   if (element.tagName !== "A") {
     while (element) {
-      if (
-        element.id === "content" &&
-        element.parentElement?.tagName === "YTD-PLAYLIST-VIDEO-RENDERER"
-      ) {
+      if (element?.tagName === "A") {
         break;
       }
       element = element.parentElement;
     }
     if (!element) {
-      return null;
-    }
-    const videoTitleAnchors = element.querySelectorAll("a#video-title");
-    if (videoTitleAnchors.length === 1) {
-      element = videoTitleAnchors[0];
-    } else {
       return null;
     }
   }
