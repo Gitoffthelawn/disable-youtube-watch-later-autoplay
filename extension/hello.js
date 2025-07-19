@@ -13,7 +13,7 @@ async function beginOnboarding() {
 
   // Manually inject the content script into existing tabs.
   for (const host of manifest.host_permissions) {
-    const ytTabs = await chrome.tabs.query({ url: host });
+    const ytTabs = await chrome.tabs.query({ url: host, status: "complete" });
     for (const tab of ytTabs) {
       await chrome.scripting.executeScript({
         target: {
